@@ -8,8 +8,8 @@ $(document).ready(function() {
 
     $('#log-in').on('click', function (event) {
       event.stopPropagation();
-
-      console.log('cur user clicked');
+      // make request to nodejs server to get user-cab form
+      window.location.href = `http://localhost:3000/user-cab?id=${curUser['id']}`;
     });
   } else {
     // logging in if user didnt authorize
@@ -60,8 +60,8 @@ $(document).ready(function() {
 
                   $('#log-in').on('click', function (event) {
                     event.stopPropagation();
-
-                    console.log('cur user clicked');
+                    // make request to nodejs server to get user-cab form
+                    window.location.href = `http://localhost:3000/user-cab?id=${JSON.parse(sessionStorage['user']['id'])}`;
                   });
                 },
                 error: function (error) {
@@ -99,14 +99,17 @@ $('header').on('click', function() {
 $('#clinic-logo').on('click', function (event) {
     event.stopPropagation();
 
-    let item = {
+    /*let item = {
         'ID': '1',
         'name': 'Валера',
         'cost': '?'
     };
 
-    window.location.href = `http://localhost:3000/confirm-order?id=${item['ID']}&name=${item['name']}&cost=${item['cost']}`;
+    window.location.href = `http://localhost:3000/confirm-order?id=${item['ID']}&name=${item['name']}&cost=${item['cost']}`;*/
     //window.location.href = `http://localhost:3000/404-error`;
+
+    // make request to nodejs server to get user-cab form
+    window.location.href = `http://localhost:3000/user-cab?id=${sessionStorage['user'].id}`;
 });
 
 /*making order event*/
@@ -133,12 +136,12 @@ $('#med-serv-search').on('keyup', function() {
                     $('#results-block').append(`
                         <li>
                             <span>${item['name']}</span>
-                            <span>${item['cost']}</span>
+                            <span>${item['cost']}$</span>
                         </li>
                     `);
                     // set handler on last dynamicly created li
-                    $('#results-block span').last().on('click', function () {
-                        window.location.href = `http://localhost:3000/confirm-order?id=${item['ID']}`;
+                    $('#results-block li').last().on('click', function () {
+                        window.location.href = `http://localhost:3000/confirm-order?id=${item['ID']}&name=${item['name']}&cost=${item['cost']}`;
                     });
                 });
             },

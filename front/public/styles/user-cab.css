@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+}
+
+header {
+  position: fixed;
+  height: 6vh;
+  top: -6vh;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #ececec;
+}
+
+#menu-icon {
+  position: fixed;
+  top: 2vh;
+  right: 1vw;
+
+  border-radius: 100%;
+  -webkit-transition: background-color 0.3s linear;
+}
+
+#menu-icon:hover {
+  cursor: pointer;
+  background-color: #ececec;
+  -webkit-transition: background-color 0.3s linear;
+}
+
+main {
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#main-area {
+  height: 80vh;
+  width: 60vw;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  background-color: #ececec;
+  box-shadow: 0 0 2px #000000a0;
+}
+
+.card {
+  background-color: #ffffff;
+  box-shadow: 0 0 2px #00000070;
+}
+
+#user-area {
+  width: 30%;
+  height: 90%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#user-img {
+  width: 100%;
+}
+
+#user-info {
+  border: 1px solid #1f1f1f60;
+}
+
+#user-info ul {
+  list-style: none;
+}
+
+#user-info li {
+  margin-left: 1vw;
+  margin-bottom: 0.2vh;
+
+  font-family: Calibri;
+  font-weight: lighter;
+}
+
+#user-info li:first-child {
+  font-size: 3.5vh;
+}
+
+#statistics {
+  height: 30%;
+  width: 100%;
+}
+
+#orders-info {
+  width: 60%;
+  height: 90%;
+
+  display: flex;
+  justify-content: center;
+  overflow: auto;
+}
+
+#orders-info table {
+  width: 85%;
+
+  font-family: Calibri;
+  font-weight: lighter;
+
+  border-collapse: collapse;
+}
+
+#orders-info table tr {
+  height: 5vh;
+  border-bottom: 1px solid #dddddd;
+  -webkit-transition: border-color 0.3s linear;
+}
+
+#orders-info table tr:not(:first-child):hover {
+  //cursor: pointer;
+  border-bottom: 1px solid crimson;
+  -webkit-transition: border-color 0.3s linear;
+}
+
+#orders-info table tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+#orders-info th {
+  color: #f9f9f9;
+  font-weight: normal;
+
+  background-color: #00b33c;
+}
+
+#orders-info td {
+  font-weight: lighter;
+  text-align: center;
+}

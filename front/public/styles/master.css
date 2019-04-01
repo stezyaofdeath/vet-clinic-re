@@ -226,8 +226,32 @@ header {
     box-sizing: border-box;
 
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
 
     list-style: none;
+}
+
+#results-block li {
+    height: 4vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+
     border-bottom: 1px solid darkgrey;
+    background-color: #fcfafa;
+    -webkit-transition: background-color 0.3s linear;
+}
+
+#results-block li:hover {
+  cursor: pointer;
+  background-color: #dadada;
+  -webkit-transition: background-color 0.3s linear;
+}
+
+#results-block li span {
+}
+
+#results-block li span:last-child {
+  text-align: right;
 }

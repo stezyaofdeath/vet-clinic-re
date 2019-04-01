@@ -31,8 +31,6 @@ app.get('/confirm-order', function (req, resp) {
       }
     }, function(error, responce, body) {
       if (!error) {
-        console.log(responce.body);
-
         resp.render(__dirname + '/public/templates/confirm-order.pug', {
             id: req.query.id,
             name: req.query.name,
@@ -88,6 +86,28 @@ app.post('/registration', function(req, resp) {
     if (!error) {
       resp.sendFile(__dirname + '/public/pages/master.html');
     }
+  });
+});
+
+app.get('/user-cab', function(req, resp) {
+  // make request to java server to get info 'bout this user
+  Request.post({
+    url: 'http://localhost:8080/back_war/vet-clinic-server',
+    form: {
+      code: 'get-orders-by-client',
+      cl_id: req.query.id
+    }
+  }, function (error, responce, body) {
+    let jsonedResponce = JSON.parse(responce.body);
+    console.log(jsonedResponce);
+
+    resp.render(__dirname + '/public/templates/user-cab.pug', {
+        nick: jsonedResponce[0]['cl_login'],
+        name: jsonedResponce[0]['cl_name'],
+        surname: jsonedResponce[0]['cl_surname'],
+        mobile: jsonedResponce[0]['cl_phone'],
+        orders: jsonedResponce[1] 
+    });
   });
 });
 

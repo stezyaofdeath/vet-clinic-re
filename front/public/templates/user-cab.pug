@@ -1,0 +1,35 @@
+extends layout
+block head
+  title Cabinet
+  link(rel='stylesheet', href='/styles/user-cab.css', type='text/css')
+  script(defer src='/scripts/user-cab.js' type='text/javascript')
+block header
+  img(id="clinic-logo" src="../resources/images/master/vet-clinic-logo.png" width="60" height="42")
+block main
+  <img id="menu-icon" src="../resources/images/master/menu-icon.png" width="45" height="45">
+  div(id="main-area")
+    div(id="user-area")
+      div(id="user-info" class="card")
+        img(id="user-img" src="../resources/images/system/user.jpg")
+        ul
+          li #{nick}
+          li #{name} #{surname}
+          li #{mobile}
+      div(id="statistics" class="card")
+
+    div(id="orders-info" class="card")
+      table
+        tr
+          th Заказ
+          th Стоимость
+          th Доктор
+          th Дата
+          th Статус
+        for val in orders
+          tr
+            td #{val['ms_name']}
+            td #{val['ms_cost']}
+            td #{val['doc_id']}
+            td #{val['proc_date'].split(' ')[0]}
+            td #{val['proc_status']}
+block footer
