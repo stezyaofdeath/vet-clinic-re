@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Registration</title>
+
+    <link rel="stylesheet" href="../styles/registration.css">
+
+    <script src="../resources/ext-libs/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../resources/ext-libs/jquery-ui/jquery-ui.min.js"></script>
+    <script defer src="../scripts/registration.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <main>
+      <form action="/registration" method="post">
+        <div id="main-info-block" class="info-block">
+          <h3>Аккаунт</h3>
+          <input id="login" class="main-info" type="text" name="login" placeholder="Логин" autocomplete="off">
+          <input id="password" class="main-info" type="text" name="password" placeholder="Пароль" autocomplete="off">
+          <input id="mobile" class="main-info" type="text" name="mobile" placeholder="Мобильный телефон" autocomplete="off">
+          <input id="email" type="text" name="email" placeholder="Электронная почта" autocomplete="off">
+        </div>
+        <div id="base-info-block" class="info-block">
+          <h3>Основная информация</h3>
+          <input id="surname" type="text" name="surname" placeholder="Фамилия" autocomplete="off">
+          <input id="name" type="text" name="name" placeholder="Имя" autocomplete="off">
+          <input id="patronum" type="text" name="patronum" placeholder="Отчество" autocomplete="off">
+        </div>
+        <div class="info-block">
+          <input id="registration-btn" type="button" value="Регистрация">
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

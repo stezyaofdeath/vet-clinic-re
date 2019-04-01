@@ -1,0 +1,5 @@
+back/.idea
+back/target
+back/back.iml
+front/node_modules
+front/package-lock.json

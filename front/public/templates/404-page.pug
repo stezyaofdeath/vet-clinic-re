@@ -1,0 +1,20 @@
+extends layout
+block head
+  title Error!
+  link(rel='stylesheet', href='/styles/404-page.css', type='text/css')
+  script(defer src='/resources/ext-libs/neon-text/jquery.novacancy.min.js' type='text/javascript')
+  script(defer src='/scripts/404-page.js' type='text/javascript')
+block header
+  h1(id="neon-this") Произошёл троллинг
+block main
+  div(id = "mask")
+  img(src='/resources/images/404/tg-2.png' height="400")
+  form
+    h1 Share your bug!
+    input(type="text" id="name-field" placeholder="name")
+    input(type="text" id="age-field" placeholder="age")
+    input(type="text" id="reason-field" placeholder="error reason")
+    textarea(id="info-field" placeholder="ur message")
+    button(type="button" id="send-report-btn") Отправить
+block footer
+  p created by addicted2u

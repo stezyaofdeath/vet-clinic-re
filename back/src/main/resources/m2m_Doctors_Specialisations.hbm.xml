@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.addicted2u.entitys.m2m_Doctors_Specialisations" table="m2m_doctors_specialisations" catalog="vet_clinic">
+        <id name="docspec_id" type="java.lang.String">
+            <column name="docspec_id" />
+        </id>
+        <property name="docspec_doctor" type="java.lang.String">
+            <column name="docspec_doctor" not-null="true" unique="false" />
+        </property>
+        <property name="docspec_specialisation" type="java.lang.String">
+            <column name="docspec_specialisation" not-null="true" unique="false" />
+        </property>
+    </class>
+</hibernate-mapping>

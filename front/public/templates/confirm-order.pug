@@ -1,0 +1,31 @@
+extends layout
+block head
+    title Anime!
+    link(rel='stylesheet', href='/styles/confirm-order.css', type='text/css')
+    script(defer src='/scripts/confirm-order.js' type='text/javascript')
+block header
+    h1 Заказ ещё не подтверждён
+block main
+    div
+      h2 Данные заказа
+      ul
+        li
+          span Номер заказа
+          span(id="order-number") #{id}
+        li
+          span Заказ:
+          span(id="order-name") #{name}
+        li
+          span Цена:
+          span(id="order-cost") #{cost}
+        li
+          span Доктор:
+          select(id="doctors")
+            for val in doctors
+              option
+                span #{val.ID}
+          span Дата:
+          input(id="order-time" type="date")
+    //img(src="/resources/images/404/tg-1.jpg")
+block footer
+    button(id="confirm-order-btn" type="button") Подтвердить

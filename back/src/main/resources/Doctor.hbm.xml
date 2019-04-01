@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.addicted2u.entitys.DoctorEntity" table="doctors" catalog="vet_clinic">
+        <id name="ID" type="java.lang.String">
+            <column name="doc_id" />
+
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="doc_name" length="20" not-null="true" unique="false" />
+        </property>
+        <property name="surname" type="java.lang.String">
+            <column name="doc_surname" length="20" not-null="true" unique="false" />
+        </property>
+        <property name="patronum" type="java.lang.String">
+            <column name="doc_patronum" length="20" not-null="true" unique="false" />
+        </property>
+    </class>
+</hibernate-mapping>

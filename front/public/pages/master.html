@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>猫</title>
+    <link rel="stylesheet" href="../styles/master.css">
+    <link rel="shortcut icon" href="../resources/images/system/vet-clinic-flav.png" type="image/x-icon" />
+
+    <script src="../resources/ext-libs/jquery/jquery-3.3.1.min.js"></script>
+    <script defer src="../scripts/master.js"></script>
+</head>
+<body>
+    <header>
+        <img id="clinic-logo" src="../resources/images/master/vet-clinic-logo.png" width="60" height="42">
+        <div id="log-in">
+            <p id="profile-name">Log in</p>
+            <img id="log-in-icon" src="../resources/images/master/log-in.png" width="35" height="35">
+        </div>
+    </header>
+    <img id="menu-icon" src="../resources/images/master/menu-icon.png" width="45" height="45">
+    <main>
+        <div id="my-modal">
+            <div id="auth-modal-content">
+                <div id="auth-closing-line">
+                    <span id="auth-modal-close">&times;</span>
+                </div>
+                <div id="auth-form-line">
+                    <form>
+                        <input id="auth-login" type="text" placeholder="Логин">
+                        <input id="auth-password" type="text" placeholder="Пароль">
+
+                        <input id="auth-check" type="button" value="Войти">
+
+                        <hr>
+
+                        <a href="/registration">Создать аккаунт</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="preview" class="card">
+            <div>
+                <img src="../resources/images/master/10.png" height="200">
+            </div>
+            <div>
+              <div id="preview-content">
+                <h1>Ветклиника 'Хвостатый сепаратист'</h1>
+                <p>Наша ветклиника супер! Вот почему...</p>
+              </div>
+            </div>
+        </div>
+        <div id="fast-order" class="card">
+            <div></div>
+            <div>
+                <div id="fast-order-content">
+                    <h1>Исцелите своё животное!</h1>
+                    <p>
+                      Просто введите название желаемой медицинской процедуры для вашей пушистой гниды и(
+                      если сервер не упадёт) выберите её в выпадающем списке.
+                    </p>
+                    <input id="med-serv-search" type="text" placeholder="медицинская процедура">
+                    <ul id="results-block"></ul>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+</body>
+</html>

@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #0000004f;
+}
+
+main {
+  height: 75vh;
+  width: 40vw;
+
+  border-radius: 5px;
+  background-color: #ffffee;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+main form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main form input[type="text"] {
+  height: 4vh;
+  padding: 0 0.5vw 0 0.5vw;
+
+  border: none;
+
+  background-color: #f5f5f5;
+}
+
+main form input[type="text"]:focus {
+  outline: none;
+}
+
+main form input[type="text"]::-webkit-input-placeholder {
+    font-style: italic;
+}
+
+main form input[type="button"], main form input[type="submit"] {
+  height: 5vh;
+  width: 8vw;
+
+
+  text-transform: uppercase;
+
+  border: none;
+  background-color: #d5d5d5;
+  color: #777777;
+}
+
+main form input[type="button"]:hover, main form input[type="submit"]:hover {
+  cursor: pointer;
+}
+
+main form input[type="button"]:focus, main form input[type="submit"]:focus {
+  outline: none;
+}
+
+.info-block {
+  width: 25vw;
+
+  margin-top: 6vh;
+}
+
+.info-block h3 {
+  font-family: Calibri;
+  font-weight: lighter;
+}
+
+
+.info-block input[type="text"]:not(:first-child) {
+  margin-top: 1vh;
+}
+
+#main-info-block {
+  display: flex;
+  flex-direction: column;
+}
+
+#base-info-block {
+  display: flex;
+  flex-direction: column;
+}
