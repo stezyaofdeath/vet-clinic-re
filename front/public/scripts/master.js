@@ -95,21 +95,18 @@ $('header').on('click', function() {
     $('#menu-icon').animate({top: '2vh', opacity: 1}, 500);
 });
 
-/*testings*/
+/*header links*/
+$('li.header-link-parent').on('click', function(event) {
+  event.stopPropagation();
+
+  window.location.href = `${$(this).find("a").first().attr("href")}`;
+});
+
+/*go preview page*/
 $('#clinic-logo').on('click', function (event) {
     event.stopPropagation();
 
-    /*let item = {
-        'ID': '1',
-        'name': 'Валера',
-        'cost': '?'
-    };
-
-    window.location.href = `http://localhost:3000/confirm-order?id=${item['ID']}&name=${item['name']}&cost=${item['cost']}`;*/
-    //window.location.href = `http://localhost:3000/404-error`;
-
-    // make request to nodejs server to get user-cab form
-    window.location.href = `http://localhost:3000/user-cab?id=${sessionStorage['user'].id}`;
+    window.location.href = `http://localhost:3000`;
 });
 
 /*making order event*/

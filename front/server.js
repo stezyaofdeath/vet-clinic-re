@@ -99,14 +99,50 @@ app.get('/user-cab', function(req, resp) {
     }
   }, function (error, responce, body) {
     let jsonedResponce = JSON.parse(responce.body);
-    console.log(jsonedResponce);
 
     resp.render(__dirname + '/public/templates/user-cab.pug', {
         nick: jsonedResponce[0]['cl_login'],
         name: jsonedResponce[0]['cl_name'],
         surname: jsonedResponce[0]['cl_surname'],
         mobile: jsonedResponce[0]['cl_phone'],
-        orders: jsonedResponce[1] 
+        orders: jsonedResponce[1]
+    });
+  });
+});
+
+// gets info 'bout doctors from db and puts it in 'doctors.pug' page
+app.get('/doctors', function(req, resp) {
+  // request to databases to get info 'bout doctors
+  Request.post({
+    url: 'http://localhost:8080/back_war/vet-clinic-server',
+    form: {
+      code: 'get-doctors'
+    }
+  }, function(error, responce, body) {
+    // put responced data in the page
+    let jsonedResponce = JSON.parse(responce.body);
+
+    let mongoClient = new MongoClient('mongodb://localhost:27017/', {useNewUrlParser: true});
+
+    mongoClient.connect(function(error, client) {
+      if (error) {
+        console.log('connection to database error!');
+      } else {
+        client.db('vet-clinic-re').collection('doctors').find({}, function(error, ress) {
+          ress.toArray(function(err, items) {
+            for (let j = 0; j < items.length; j++) {
+              for (let i = 0; i < jsonedResponce.length; i++) {
+                if (items[j].id === jsonedResponce[i].id) {
+                  jsonedResponce[i]['info'] = items[j].info;
+                }
+              }
+            }
+            resp.render(__dirname + '/public/templates/doctors.pug', {
+              doctors: jsonedResponce
+            });
+          });
+        });
+      }
     });
   });
 });

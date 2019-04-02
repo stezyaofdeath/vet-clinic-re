@@ -1,0 +1,20 @@
+extends layout
+block head
+  title Наши врачи
+  link(rel='stylesheet', href='/styles/doctors.css', type='text/css')
+  script(defer src='/scripts/doctors.js' type='text/javascript')
+block header
+block main
+  div(id="main-area")
+    h1 Наши сотрудники
+    for doctor in doctors
+      div(class="doctor-card")
+        div(class="main-info")
+          div(class="doctor-img-cont" class="card")
+            img(class="doctor-img" src="../resources/images/system/user.jpg")
+          ul(class="contacts" class="card")
+            li #{doctor.name} #{doctor.surname}
+            li #{doctor.spec_name}
+        div(class="about-info" class="card")
+          p #{doctor.info}
+block footer

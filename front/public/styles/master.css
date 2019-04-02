@@ -25,6 +25,39 @@ header {
     background-color: #ececec;
 }
 
+header ul {
+  display: flex;
+
+  list-style: none;
+}
+
+header li:not(:nth-child(2)) {
+  height: 6vh;
+  width: 10vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+
+  border-bottom: 5px solid #ececec;
+  -webkit-transition: border-bottom-color 0.3s linear;
+}
+
+header li:not(:nth-child(2)):hover {
+  cursor: pointer;
+  border-bottom: 5px solid blue;
+  -webkit-transition: border-bottom-color 0.3s linear;
+}
+
+
+header li a {
+  display: block;
+
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
 #log-in {
     position: absolute;
     right: 1vw;
