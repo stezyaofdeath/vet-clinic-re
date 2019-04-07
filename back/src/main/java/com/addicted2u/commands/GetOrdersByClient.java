@@ -51,7 +51,7 @@ public class GetOrdersByClient implements Command {
         transaction = session.beginTransaction();
 
         Query query = session.createSQLQuery(
-                "select doc_id, doc_name, doc_surname, ms_name, ms_cost, proc_date, proc_status\n" +
+                "select doc_id, doc_name, doc_surname, ms_id, ms_name, ms_cost, proc_date, proc_status\n" +
                         "from procedures\n" +
                         "inner join doctors on proc_doctor = doctors.doc_id\n" +
                         "inner join medicalservices on proc_medService= medicalservices.ms_id"
@@ -60,7 +60,7 @@ public class GetOrdersByClient implements Command {
 
         ArrayList<Map> resultList = new ArrayList<>();
         String[] keys = {
-                "doc_id", "doc_name", "doc_surname", "ms_name", "ms_cost", "proc_date", "proc_status"
+                "doc_id", "doc_name", "doc_surname", "ms_id", "ms_name", "ms_cost", "proc_date", "proc_status"
         };
 
         for(Object[] procedure : procedures) {

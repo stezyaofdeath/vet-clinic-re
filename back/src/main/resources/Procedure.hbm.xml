@@ -14,7 +14,7 @@
         <property name="medservice" type="int">
             <column name="proc_medService" not-null="true" unique="false" />
         </property>
-        <property name="doctor" type="int">
+        <property name="doctor" type="java.lang.String">
             <column name="proc_doctor" not-null="true" unique="false" />
         </property>
         <property name="date" type="java.util.Date">

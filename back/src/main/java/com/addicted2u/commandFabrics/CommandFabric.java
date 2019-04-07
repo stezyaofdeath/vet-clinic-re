@@ -26,7 +26,7 @@ public class CommandFabric {
                     return (new ConfirmOrder((new ProcedureEntity(
                             Integer.parseInt(request.getParameter("client_id")),
                             Integer.parseInt(request.getParameter("order_id")),
-                            Integer.parseInt(request.getParameter("doctor_id")),
+                            request.getParameter("doctor_id"),
                             (new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("date"))),
                             Boolean.parseBoolean(request.getParameter("status"))
                     )), session));
@@ -50,6 +50,9 @@ public class CommandFabric {
             }
             case ("get-doctors"): {
                 return (new GetDoctors(session));
+            }
+            case ("change-order-status"): {
+                return (new ChangeOrderStatus(session, request.getParameter("st_id")));
             }
             default: {
                 return null;

@@ -144,3 +144,27 @@ main {
   font-weight: lighter;
   text-align: center;
 }
+
+.st-active {
+  color: #00cf3c;
+  -webkit-transition: color 0.3s linear;
+}
+
+.st-active:hover {
+  color: crimson;
+  -webkit-transition: color 0.3s linear;
+
+  cursor: pointer;
+}
+
+.st-inactive {
+  color: crimson;
+  -webkit-transition: color 0.3s linear;
+}
+
+.st-inactive:hover {
+  color: #00cf3c;
+  -webkit-transition: color 0.3s linear;
+
+  cursor: pointer;
+}

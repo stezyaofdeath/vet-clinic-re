@@ -20,6 +20,7 @@ block main
     div(id="orders-info" class="card")
       table
         tr
+          th ID
           th Заказ
           th Стоимость
           th Доктор
@@ -27,9 +28,14 @@ block main
           th Статус
         for val in orders
           tr
+            td #{val['ms_id']}
             td #{val['ms_name']}
             td #{val['ms_cost']}
             td #{val['doc_id']}
             td #{val['proc_date'].split(' ')[0]}
-            td #{val['proc_status']}
+            if val['proc_status'] === 'true'
+              td(class="st-active") active
+            else
+              td(class="st-inactive") inactive
+
 block footer

@@ -20,22 +20,27 @@ $(document).ready(function() {
 
         // make modal window appear
         modal.css({
-            'display': 'block'
+          "display": "block"
         });
+        modal.animate({opacity: "1"}, 500);
 
         // closing auth window after clicking outside the auth window
         $(window).on('click', function (event) {
             if (event.target === modal.get(0)) {
-                modal.css({
-                    'display': 'none'
+                modal.animate({opacity: "0"}, 500, function() {
+                  modal.css({
+                      'display': 'none'
+                  });
                 });
             }
         });
 
         // closing auth window after clicking the cross
         $('#auth-modal-close').on('click', function () {
-            modal.css({
-                'display': 'none'
+            modal.animate({opacity: "0"}, 500, function() {
+              modal.css({
+                  'display': 'none'
+              });
             });
         });
 

@@ -6,14 +6,14 @@ public class ProcedureEntity {
     private int id;
     private int client;
     private int medservice;
-    private int doctor;
+    private String doctor;
     private Date date;
     private boolean status;
 
     public ProcedureEntity() {
     }
 
-    public ProcedureEntity(int client, int medservice, int doctor, Date date, boolean status) {
+    public ProcedureEntity(int client, int medservice, String doctor, Date date, boolean status) {
         this.client = client;
         this.medservice = medservice;
         this.doctor = doctor;
@@ -45,11 +45,11 @@ public class ProcedureEntity {
         this.medservice = medservice;
     }
 
-    public int getDoctor() {
+    public String getDoctor() {
         return doctor;
     }
 
-    public void setDoctor(int doctor) {
+    public void setDoctor(String doctor) {
         this.doctor = doctor;
     }
 
@@ -67,5 +67,17 @@ public class ProcedureEntity {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "ProcedureEntity{" +
+                "id=" + id +
+                ", client=" + client +
+                ", medservice=" + medservice +
+                ", doctor=" + doctor +
+                ", date=" + date +
+                ", status=" + status +
+                '}';
     }
 }
