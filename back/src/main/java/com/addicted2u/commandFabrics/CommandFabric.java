@@ -8,7 +8,6 @@ import org.hibernate.Session;
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class CommandFabric {
     public static Command getCommand(HttpServletRequest request, Session session) {
@@ -28,7 +27,8 @@ public class CommandFabric {
                             Integer.parseInt(request.getParameter("client_id")),
                             Integer.parseInt(request.getParameter("order_id")),
                             Integer.parseInt(request.getParameter("doctor_id")),
-                            (new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("date")))
+                            (new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("date"))),
+                            Boolean.parseBoolean(request.getParameter("status"))
                     )), session));
                 } catch (ParseException e) {
                     e.printStackTrace();
@@ -44,6 +44,12 @@ public class CommandFabric {
                         request.getParameter("mobile"),
                         request.getParameter("email")
                 )), session));
+            }
+            case ("get-orders-by-client"): {
+                return (new GetOrdersByClient(request.getParameter("cl_id"), session));
+            }
+            case ("get-doctors"): {
+                return (new GetDoctors(session));
             }
             default: {
                 return null;
