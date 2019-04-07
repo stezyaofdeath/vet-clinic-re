@@ -209,3 +209,60 @@ main {
 
   cursor: pointer;
 }
+
+#doctor-report-window {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  font-family: Calibri;
+
+  background-color: #00000070;
+}
+
+#doctor-report-form {
+  padding: 1%;
+  width: 35vw;
+  height: 60vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+
+  background-color: #2f2f2f;
+}
+
+#doctor-report-form #doctor-info-line {
+  height: 15%;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  background-color: #454545;
+}
+
+#doctor-report-form #doctor-info-line * {
+  margin: 1vw;
+}
+
+#doctor-report-form textarea {
+  height: 60%;
+  padding: 1vw;
+
+  box-sizing: border-box;
+
+  color: #fafafa;
+
+  background-color: #454545;
+  border: none;
+}
+
+#doctor-report-form textarea:focus {
+  outline: none;
+}

@@ -55,6 +55,9 @@ public class CommandFabric {
             case ("change-order-status"): {
                 return (new ChangeOrderStatus(session, request.getParameter("st_id")));
             }
+            case ("get-doctor-by-id"): {
+                return (new GetDoctorById(session, request.getParameter("doc_id")));
+            }
             default: {
                 return null;
             }

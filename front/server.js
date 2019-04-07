@@ -99,7 +99,7 @@ app.get('/user-cab', function(req, resp) {
     }
   }, function (error, responce, body) {
     let jsonedResponce = JSON.parse(responce.body);
-    
+
     resp.render(__dirname + '/public/templates/user-cab.pug', {
         nick: jsonedResponce[0]['cl_login'],
         name: jsonedResponce[0]['cl_name'],
@@ -144,6 +144,29 @@ app.get('/doctors', function(req, resp) {
         });
       }
     });
+  });
+});
+
+/*insert info 'bout doctor from user to db'*/
+app.post('/save-doc-eval', function(req, resp) {
+  let mongoClient = new MongoClient('mongodb://localhost:27017/', {useNewUrlParser: true});
+
+  mongoClient.connect(function(error, client) {
+    if (error) {
+      console.log('connection to database error!');
+    } else {
+      client.db('vet-clinic-re').collection('doc-reports').insertOne({
+        docId: req.body.doc_id,
+        docEval: req.body.doc_eval,
+        docReport: req.body.doc_report
+      }, function(err, result) {
+        if (err) {
+          resp.send('error!');
+        } else {
+          resp.send('success!');
+        }
+      });
+    }
   });
 });
 

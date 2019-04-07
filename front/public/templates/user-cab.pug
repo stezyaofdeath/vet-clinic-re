@@ -37,11 +37,19 @@ block main
             td #{val['ms_id']}
             td #{val['ms_name']}
             td #{val['ms_cost']}
-            td #{val['doc_id']}
+            td(class="doctor") #{val['doc_id']}
             td #{val['proc_date'].split(' ')[0]}
             if val['proc_status'] === 'true'
               td(class="st-active") active
             else
               td(class="st-inactive") inactive
+    div(id="doctor-report-window")
+      div(id="doctor-report-form")
+        div(id="doctor-info-line")
+          img(src="../resources/images/system/user.jpg" width="50")
+          p(id="doctor-name")
 
+        input(id="doc-eval" type="range" min="0" max="100")
+        textarea(id="doc-report")
+        button(id="send-doctor-report-btn") Отправить
 block footer
