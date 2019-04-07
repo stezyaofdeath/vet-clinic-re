@@ -1,3 +1,17 @@
+/*init settings*/
+$(document).ready(function() {
+  let curUser = JSON.parse(sessionStorage['user']);
+  if (curUser['stat'] < 0.9) {
+    $('#status-circle').attr('class', 'stat-good');
+  } else if (curUser['stat'] > 1.1) {
+    $('#status-circle').attr('class', 'stat-bad');
+  } else {
+    $('#status-circle').attr('class', 'stat-ok');
+  }
+
+  $('#stat-coef').text(curUser['stat']);
+});
+
 /*header appearing*/
 $('#menu-icon').click(function () {
   $('header').animate({top: 0}, 500);
@@ -21,7 +35,6 @@ $('.st-active, .st-inactive').on('click', function() {
       st_id: selfRow.parent().find('td').first().text()
     },
     success: function() {
-      console.log(selfRow.text());
       if (selfRow.text() === 'active') {
         selfRow.text('inactive');
         selfRow.removeClass('st-active').addClass('st-inactive');

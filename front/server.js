@@ -99,7 +99,7 @@ app.get('/user-cab', function(req, resp) {
     }
   }, function (error, responce, body) {
     let jsonedResponce = JSON.parse(responce.body);
-
+    
     resp.render(__dirname + '/public/templates/user-cab.pug', {
         nick: jsonedResponce[0]['cl_login'],
         name: jsonedResponce[0]['cl_name'],

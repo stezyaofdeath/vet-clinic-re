@@ -134,18 +134,33 @@ $('#med-serv-search').on('keyup', function() {
                 // remove all li's from the ul
                 $('#results-block').empty();
                 // create li for every result-array item and add it to #result-block ul
-                jsonedData.forEach(function (item) {
-                    $('#results-block').append(`
-                        <li>
-                            <span>${item['name']}</span>
-                            <span>${item['cost']}$</span>
-                        </li>
-                    `);
-                    // set handler on last dynamicly created li
-                    $('#results-block li').last().on('click', function () {
-                        window.location.href = `http://localhost:3000/confirm-order?id=${item['ID']}&name=${item['name']}&cost=${item['cost']}`;
-                    });
-                });
+                if (sessionStorage['user'] !== undefined && JSON.parse(sessionStorage['user']).stat < 1) {
+                  jsonedData.forEach(function (item) {
+                      $('#results-block').append(`
+                          <li>
+                              <span>${item['name']}</span>
+                              <span><span>${(item['cost']*JSON.parse(sessionStorage['user']).stat).toFixed(2)}$</span> <span>${(item['cost']).toFixed(2)}$</span></span>
+                          </li>
+                      `);
+                      // set handler on last dynamicly created li
+                      $('#results-block li').last().on('click', function () {
+                          window.location.href = `http://localhost:3000/confirm-order?id=${item['ID']}&name=${item['name']}&cost=${item['cost']}`;
+                      });
+                  });
+                } else {
+                  jsonedData.forEach(function (item) {
+                      $('#results-block').append(`
+                          <li>
+                              <span>${item['name']}</span>
+                              <span>${(item['cost']).toFixed(2)}$</span>
+                          </li>
+                      `);
+                      // set handler on last dynamicly created li
+                      $('#results-block li').last().on('click', function () {
+                          window.location.href = `http://localhost:3000/confirm-order?id=${item['ID']}&name=${item['name']}&cost=${item['cost']}`;
+                      });
+                  });
+                }
             },
             error: function() {
                 console.log('error!');

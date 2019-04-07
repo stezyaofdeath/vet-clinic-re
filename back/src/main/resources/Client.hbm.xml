@@ -32,5 +32,9 @@
         <property name="email" type="java.lang.String">
             <column name="cl_email" length="30" not-null="true" unique="false" />
         </property>
+
+        <property name="stat" type="float">
+            <column name="cl_stat" not-null="true" unique="false" />
+        </property>
     </class>
 </hibernate-mapping>

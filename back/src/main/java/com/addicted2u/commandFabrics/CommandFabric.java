@@ -42,7 +42,8 @@ public class CommandFabric {
                         request.getParameter("surname"),
                         request.getParameter("patronum"),
                         request.getParameter("mobile"),
-                        request.getParameter("email")
+                        request.getParameter("email"),
+                        1
                 )), session));
             }
             case ("get-orders-by-client"): {

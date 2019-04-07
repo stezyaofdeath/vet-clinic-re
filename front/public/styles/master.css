@@ -286,6 +286,15 @@ header li a {
 #results-block li span {
 }
 
+#results-block li span span:nth-child(1) {
+  color: green;
+}
+
+#results-block li span span:nth-child(2) {
+  color: red;
+  text-decoration: line-through;
+}
+
 #results-block li span:last-child {
   text-align: right;
 }

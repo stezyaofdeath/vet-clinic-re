@@ -11,6 +11,7 @@ public class ClientEntity implements Serializable {
     private String patronum;
     private String phone;
     private String email;
+    private float stat;
 
     public ClientEntity() {
     }
@@ -23,6 +24,17 @@ public class ClientEntity implements Serializable {
         this.patronum = patronum;
         this.phone = phone;
         this.email = email;
+    }
+
+    public ClientEntity(String login, String password, String name, String surname, String patronum, String phone, String email, float stat) {
+        this.login = login;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.patronum = patronum;
+        this.phone = phone;
+        this.email = email;
+        this.stat = stat;
     }
 
     public int getId() {
@@ -89,6 +101,14 @@ public class ClientEntity implements Serializable {
         this.email = email;
     }
 
+    public float getStat() {
+        return stat;
+    }
+
+    public void setStat(float stat) {
+        this.stat = stat;
+    }
+
     @Override
     public String toString() {
         return "ClientEntity{" +
@@ -100,6 +120,7 @@ public class ClientEntity implements Serializable {
                 ", patronum='" + patronum + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
+                ", stat=" + stat +
                 '}';
     }
 }
