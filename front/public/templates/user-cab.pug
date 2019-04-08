@@ -36,7 +36,7 @@ block main
           tr
             td #{val['ms_id']}
             td #{val['ms_name']}
-            td #{val['ms_cost']}
+            td #{val['proc_realCost']}
             td(class="doctor") #{val['doc_id']}
             td #{val['proc_date'].split(' ')[0]}
             if val['proc_status'] === 'true'

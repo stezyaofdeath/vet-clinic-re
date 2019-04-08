@@ -28,7 +28,8 @@ public class CommandFabric {
                             Integer.parseInt(request.getParameter("order_id")),
                             request.getParameter("doctor_id"),
                             (new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("date"))),
-                            Boolean.parseBoolean(request.getParameter("status"))
+                            Boolean.parseBoolean(request.getParameter("status")),
+                            Float.parseFloat(request.getParameter("real_cost"))
                     )), session));
                 } catch (ParseException e) {
                     e.printStackTrace();

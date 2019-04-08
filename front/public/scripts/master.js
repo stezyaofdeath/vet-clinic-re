@@ -144,7 +144,7 @@ $('#med-serv-search').on('keyup', function() {
                       `);
                       // set handler on last dynamicly created li
                       $('#results-block li').last().on('click', function () {
-                          window.location.href = `http://localhost:3000/confirm-order?id=${item['ID']}&name=${item['name']}&cost=${item['cost']}`;
+                          window.location.href = `http://localhost:3000/confirm-order?id=${item['ID']}&name=${item['name']}&cost=${(item['cost']*JSON.parse(sessionStorage['user']).stat).toFixed(2)}`;
                       });
                   });
                 } else {
@@ -157,7 +157,7 @@ $('#med-serv-search').on('keyup', function() {
                       `);
                       // set handler on last dynamicly created li
                       $('#results-block li').last().on('click', function () {
-                          window.location.href = `http://localhost:3000/confirm-order?id=${item['ID']}&name=${item['name']}&cost=${item['cost']}`;
+                          window.location.href = `http://localhost:3000/confirm-order?id=${item['ID']}&name=${item['name']}&cost=${item['cost'].toFixed(2)}`;
                       });
                   });
                 }

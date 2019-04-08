@@ -150,7 +150,6 @@ app.get('/doctors', function(req, resp) {
 /*insert info 'bout doctor from user to db'*/
 app.post('/save-doc-eval', function(req, resp) {
   let mongoClient = new MongoClient('mongodb://localhost:27017/', {useNewUrlParser: true});
-
   mongoClient.connect(function(error, client) {
     if (error) {
       console.log('connection to database error!');
@@ -164,6 +163,29 @@ app.post('/save-doc-eval', function(req, resp) {
           resp.send('error!');
         } else {
           resp.send('success!');
+        }
+      });
+    }
+  });
+});
+
+app.post('/check-doctor', function(req, resp) {
+  let mongoClient = new MongoClient('mongodb://localhost:27017/', {useNewUrlParser: true});
+  mongoClient.connect(function(error, client) {
+    if (error) {
+      console.log('connection to database error!');
+    } else {
+      client.db('vet-clinic-re').collection('doc-reports').find({docId: req.body.doctor}).toArray(function(err, result) {
+        if (err) {
+          console.log('error');
+        } else {
+          let sumEval = 0;
+          result.forEach(function(item) {
+            sumEval += parseInt(item.docEval);
+          });
+          resp.send({
+            eval: Math.floor(sumEval/result.length)
+          });
         }
       });
     }

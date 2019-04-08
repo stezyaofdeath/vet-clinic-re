@@ -1,8 +1,6 @@
 package com.addicted2u.commands;
 
-import com.addicted2u.entitys.ClientEntity;
 import com.addicted2u.entitys.DoctorEntity;
-import com.addicted2u.entitys.ProcedureEntity;
 import com.google.gson.Gson;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

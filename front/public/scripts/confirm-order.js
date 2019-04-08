@@ -19,7 +19,8 @@ $('#confirm-order-btn').on('click', function() {
         order_id: $('#order-number').text(),
         doctor_id: $('#doctors option:selected').text(),
         date: $('#order-time').val(),
-        client_id: JSON.parse(sessionStorage.user).id
+        client_id: JSON.parse(sessionStorage.user).id,
+        real_cost: $('#order-cost').text()
       },
       success: function(data) {
         console.log(data);
@@ -29,4 +30,36 @@ $('#confirm-order-btn').on('click', function() {
       }
     });
   }
+});
+
+// check doctors status when he selected
+$('#doctors').change(function() {
+  let self = $('#doctors option:selected');
+  $.ajax({
+    url: 'http://localhost:3000/check-doctor',
+    type: 'post',
+    data: {
+      doctor: self.text()
+    },
+    success: function(data) {
+      let eval = parseInt(data.eval);
+      console.log(eval);
+      if (eval < 30) {
+        $('#doctor-label').css({
+          'color': 'red'
+        });
+      } else if (eval < 70) {
+        $('#doctor-label').css({
+          'color': 'yellow'
+        });
+      } else {
+        $('#doctor-label').css({
+          'color': 'green'
+        });
+      }
+    },
+    error: function() {
+      console.log('error');
+    }
+  });
 });

@@ -9,16 +9,18 @@ public class ProcedureEntity {
     private String doctor;
     private Date date;
     private boolean status;
+    private float realCost;
 
     public ProcedureEntity() {
     }
 
-    public ProcedureEntity(int client, int medservice, String doctor, Date date, boolean status) {
+    public ProcedureEntity(int client, int medservice, String doctor, Date date, boolean status, float realCost) {
         this.client = client;
         this.medservice = medservice;
         this.doctor = doctor;
         this.date = date;
         this.status = status;
+        this.realCost = realCost;
     }
 
     public int getId() {
@@ -69,15 +71,24 @@ public class ProcedureEntity {
         this.status = status;
     }
 
+    public float getRealCost() {
+        return realCost;
+    }
+
+    public void setRealCost(float realCost) {
+        this.realCost = realCost;
+    }
+
     @Override
     public String toString() {
         return "ProcedureEntity{" +
                 "id=" + id +
                 ", client=" + client +
                 ", medservice=" + medservice +
-                ", doctor=" + doctor +
+                ", doctor='" + doctor + '\'' +
                 ", date=" + date +
                 ", status=" + status +
+                ", realCost=" + realCost +
                 '}';
     }
 }
