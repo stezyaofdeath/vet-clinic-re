@@ -68,6 +68,12 @@ public class CommandFabric {
             case ("get-client-stats"): {
                 return (new GetClientStats(request.getParameter("client_id"), session));
             }
+            case ("get-all-ms"): {
+                return (new GetAllMedicalServices(session));
+            }
+            case ("get-doctors-my-med-service"): {
+                return (new GetDoctorsByMedService(session, request.getParameter("medService")));
+            }
             default: {
                 return null;
             }

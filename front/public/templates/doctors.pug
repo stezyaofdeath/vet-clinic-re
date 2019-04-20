@@ -13,7 +13,7 @@ block main
   div(id="main-area")
     h1 Наши сотрудники
     for doctor in doctors
-      div(class="doctor-card")
+      div(class="doctor-card" id=`${doctor.id}`)
         div(class="main-info")
           div(class="doctor-img-cont" class="card")
             img(class="doctor-img" src="../resources/images/system/user.jpg")

@@ -1,0 +1,23 @@
+extends layout
+block head
+  title Services
+  link(rel='stylesheet', href='/styles/med-services.css', type='text/css')
+  script(defer src='/scripts/med-services.js' type='text/javascript')
+block header
+  img(id="clinic-logo" src="../resources/images/master/vet-clinic-logo.png" width="60" height="42")
+block main
+  <img id="menu-icon" src="../resources/images/master/menu-icon.png" width="45" height="45">
+  div(class="main-area")
+    div(class="empty")
+      div(class="doctors-area")
+    div(class="content")
+      for med_serv in med_servs
+        div(class="ms-card" data-id=`${med_serv.ID}`)
+          div(class="info-block")
+            div(class="ms-name")
+              span #{med_serv.name}
+            div(class="ms-expl")
+              span #{med_serv.info}
+          div(class="price-block")
+            span #{med_serv.cost}$
+block footer

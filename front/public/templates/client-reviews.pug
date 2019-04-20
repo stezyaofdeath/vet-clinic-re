@@ -1,0 +1,24 @@
+extends layout
+block head
+  title Services
+  link(rel='stylesheet', href='/styles/client-reviews.css', type='text/css')
+  script(defer src='/scripts/client-reviews.js' type='text/javascript')
+block header
+  img(id="clinic-logo" src="../resources/images/master/vet-clinic-logo.png" width="60" height="42")
+block main
+  <img id="menu-icon" src="../resources/images/master/menu-icon.png" width="45" height="45">
+  div(class="main-area")
+    div(class="empty")
+      div(class="doctors-area")
+    div(class="content")
+      for review in reviews
+        if review.docEval >= 80
+          div(class="r-card" class="rev-good" data-doc=`${review.docId}`)
+            span #{review.docReport}
+        else if review.docEval >= 40
+          div(class="r-card" class="rev-us" data-doc=`${review.docId}`)
+            span #{review.docReport}
+        else
+          div(class="r-card" class="rev-bad" data-doc=`${review.docId}`)
+            span #{review.docReport}
+block footer

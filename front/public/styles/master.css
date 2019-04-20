@@ -31,7 +31,7 @@ header ul {
   list-style: none;
 }
 
-header li:not(:nth-child(2)) {
+header li:not(:nth-child(3)) {
   height: 6vh;
   width: 10vw;
 
@@ -44,7 +44,7 @@ header li:not(:nth-child(2)) {
   -webkit-transition: border-bottom-color 0.3s linear;
 }
 
-header li:not(:nth-child(2)):hover {
+header li:not(:nth-child(3)):hover {
   cursor: pointer;
   border-bottom: 5px solid blue;
   -webkit-transition: border-bottom-color 0.3s linear;

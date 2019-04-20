@@ -213,6 +213,60 @@ app.post('/doctor-about-by-id', function(req, resp) {
   });
 });
 
+app.get('/med-services', function(req, resp) {
+  // make request to java-server for all medical services data
+  Request.post({
+    url: 'http://localhost:8080/back_war/vet-clinic-server',
+    form: {
+      code: 'get-all-ms'
+    }
+  }, function(err, responce, body) {
+    let jsonedResponce = JSON.parse(responce.body);
+
+    // get explanation for every ms from mongoDB
+    let mongoClient = new MongoClient('mongodb://localhost:27017/', {useNewUrlParser: true});
+
+    mongoClient.connect(function(error, client) {
+      if (error) {
+        console.log('error');
+      } else {
+        client.db('vet-clinic-re').collection('msExplanation').find({}).toArray(function(err, res) {
+          jsonedResponce.forEach(function(item) {
+            let expl = res.find((mongoItem) => mongoItem.id === item.ID);
+            if (expl) {
+              item['info'] = expl.expl;
+            }
+          });
+          resp.render(__dirname + '/public/templates/med-services.pug', {
+            med_servs: jsonedResponce
+          });
+        });
+      }
+    });
+  });
+});
+
+app.get('/client-reviews', function(req, resp) {
+  // get explanation for every ms from mongoDB
+  let mongoClient = new MongoClient('mongodb://localhost:27017/', {useNewUrlParser: true});
+
+  mongoClient.connect(function(error, client) {
+    if (error) {
+      console.log(error);
+    } else {
+      client.db('vet-clinic-re').collection('doc-reports').find({}).toArray(function(err, res) {
+        if (err) {
+          console.log(err);
+        } else {
+          resp.render(__dirname + '/public/templates/client-reviews.pug', {
+            reviews: res
+          });
+        }
+      });
+    }
+  });
+});
+
 // start server to listen the port
 app.listen(port, function () {
    console.log(`server listening port-${port}...`);
