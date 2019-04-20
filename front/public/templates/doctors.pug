@@ -4,7 +4,10 @@ block head
   link(rel='stylesheet', href='/styles/doctors.css', type='text/css')
   script(defer src='/scripts/doctors.js' type='text/javascript')
 block header
-  img(id="clinic-logo" src="../resources/images/master/vet-clinic-logo.png" width="60" height="42")
+  //img(id="clinic-logo" src="../resources/images/master/vet-clinic-logo.png" width="60" height="42")
+  div(id="filter-block")
+    input(id="spec-filter" placeholder="специализация")
+    button(id="spec-filter-btn") Искать
 block main
   <img id="menu-icon" src="../resources/images/master/menu-icon.png" width="45" height="45">
   div(id="main-area")

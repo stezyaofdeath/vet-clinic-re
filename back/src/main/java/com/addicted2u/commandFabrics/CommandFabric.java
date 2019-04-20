@@ -53,11 +53,20 @@ public class CommandFabric {
             case ("get-doctors"): {
                 return (new GetDoctors(session));
             }
+            case ("get-doctors-by-spec"): {
+                return (new GetDoctorsBySpec(session, request.getParameter("doc_spec")));
+            }
             case ("change-order-status"): {
                 return (new ChangeOrderStatus(session, request.getParameter("st_id")));
             }
             case ("get-doctor-by-id"): {
                 return (new GetDoctorById(session, request.getParameter("doc_id")));
+            }
+            case ("get-clinic-stats"): {
+                return (new GetClinicStats(session));
+            }
+            case ("get-client-stats"): {
+                return (new GetClientStats(request.getParameter("client_id"), session));
             }
             default: {
                 return null;

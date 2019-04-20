@@ -197,6 +197,22 @@ app.get('/clinic-stats', function(req, resp) {
   resp.sendFile(__dirname + '/public/pages/clinic-stats.html');
 });
 
+app.post('/doctor-about-by-id', function(req, resp) {
+  let mongoClient = new MongoClient('mongodb://localhost:27017/', {useNewUrlParser: true});
+  mongoClient.connect(function(error, client) {
+    if (error) {
+      console.log('connection to database error!');
+    } else {
+      client.db('vet-clinic-re').collection('doctors').findOne({id: req.body.doc_id}, function(err, result) {
+        if (err) {
+          console.log(err);
+        }
+        resp.send(result.info);
+      });
+    }
+  });
+});
+
 // start server to listen the port
 app.listen(port, function () {
    console.log(`server listening port-${port}...`);
