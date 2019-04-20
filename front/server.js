@@ -192,6 +192,11 @@ app.post('/check-doctor', function(req, resp) {
   });
 });
 
+app.get('/clinic-stats', function(req, resp) {
+  /*send responce to the server for analytics data and on success render template file with it*/
+  resp.sendFile(__dirname + '/public/pages/clinic-stats.html');
+});
+
 // start server to listen the port
 app.listen(port, function () {
    console.log(`server listening port-${port}...`);

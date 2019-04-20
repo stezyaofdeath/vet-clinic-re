@@ -12,6 +12,87 @@ $(document).ready(function() {
   $('#stat-coef').text(curUser['stat']);
 });
 
+/*set scrolling on the arrows...*/
+/*...and add lazy stats responce to it*/
+let calculated = false;
+$(document).bind('keydown', function (event) {
+    if (event.key === 'ArrowRight') {
+      let curUser = JSON.parse(sessionStorage['user']);
+      console.log(curUser['id']);
+      if (!calculated) {
+        // make ajax request to java serevr
+        $.ajax({
+          url: 'http://localhost:8080/back_war/vet-clinic-server',
+          type: 'post',
+          data: {
+            code: 'get-client-stats',
+            client_id: curUser['id']
+          },
+          success: function(data) {
+            // get the info and draw charts on callback
+            let jsonedData = JSON.parse(data);
+            console.log(jsonedData);
+            console.log(jsonedData[0]);
+
+            let popCanvas = $('#finances-canvas');
+            let financesChart = new Chart(popCanvas, {
+              type: 'bar',
+              data: {
+                labels: ["Потрачено(со скидкой)", "Потрачено(без скидки)"],
+                datasets: [{
+                  label: 'Прибыль за 2019',
+                  data: [jsonedData[0][0], jsonedData[0][1]],
+                  backgroundColor: [jsonedData[0][0], jsonedData[0][1]].map((item, index) => `rgba(${parseInt(Math.random()*255)}, ${parseInt(Math.random()*255)}, ${parseInt(Math.random()*255)}, 0.6)`)
+                }]
+              },
+              options: {
+                maintainAspectRatio: false,
+              }
+            });
+
+            let ordersLabel = [];
+            let ordersCount = [];
+            let ordersCountReal = jsonedData[2];
+            ordersCountReal.forEach(function(item) {
+              ordersLabel.push(item['serv_name']);
+              ordersCount.push(parseInt(item['serv_count']));
+            });
+            console.log(ordersLabel, ordersCount);
+            let servCanvas = $('#orders-canvas');
+            let servChart = new Chart(servCanvas, {
+              type: 'doughnut',
+              data: {
+                labels: ordersLabel,
+                datasets: [{
+                  label: 'Структура заказов за 2019',
+                  data: ordersCount,
+                  backgroundColor: ordersCount.map((item, index) => `rgba(${parseInt(Math.random()*255)}, ${parseInt(Math.random()*255)}, ${parseInt(Math.random()*255)}, 0.6)`)
+                }]
+              },
+              options: {
+                maintainAspectRatio: false,
+                legend: {
+                  display: null
+                }
+              }
+            });
+            
+            $('#fav-doctor').text(`${jsonedData[1]['doctorest_id']} ${jsonedData[1]['doctorest_name']} ${jsonedData[1]['doctorest_surname']}`)
+          },
+          error: function(err) {
+            console.log(err);
+          }
+        });
+
+        calculated = false;
+      }
+      $('html, body').animate({scrollTop : `+=${window.innerHeight}`}, 500);
+    }
+    if (event.key === 'ArrowLeft') {
+      $('html, body').animate({scrollTop : `-=${window.innerHeight}`}, 500);
+    }
+});
+
 /*show the doctor evaluating form when user hovers doctors id*/
 $('.doctor').on('click', function() {
   let docId = $(this).text();

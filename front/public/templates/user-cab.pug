@@ -2,54 +2,66 @@ extends layout
 block head
   title Cabinet
   link(rel='stylesheet', href='/styles/user-cab.css', type='text/css')
+  script(src='/resources/ext-libs/Chart.js/Chart.min.js')
   script(defer src='/scripts/user-cab.js' type='text/javascript')
 block header
   img(id="clinic-logo" src="../resources/images/master/vet-clinic-logo.png" width="60" height="42")
 block main
+
   <img id="menu-icon" src="../resources/images/master/menu-icon.png" width="45" height="45">
-  div(id="main-area")
-    div(id="user-area")
-      div(id="user-info" class="card")
-        img(id="user-img" src="../resources/images/system/user.jpg")
-        ul
-          li #{nick}
-          li #{name} #{surname}
-          li #{mobile}
-      div(id="statistics" class="card")
-        div(class="stat-color")
-          h1 Ваш статус:
-          span(id="status-circle")
-        div(class="stat-color")
-          h1 Ваш коэффициент:
-          span(id="stat-coef")
+  div(class="area-wrapper")
+    div(id="main-area" class="area")
+      div(id="user-area")
+        div(id="user-info" class="card")
+          img(id="user-img" src="../resources/images/system/user.jpg")
+          ul
+            li #{nick}
+            li #{name} #{surname}
+            li #{mobile}
+        div(id="statistics" class="card")
+          div(class="stat-color")
+            h1 Ваш статус:
+            span(id="status-circle")
+          div(class="stat-color")
+            h1 Ваш коэффициент:
+            span(id="stat-coef")
 
-    div(id="orders-info" class="card")
-      table
-        tr
-          th ID
-          th Заказ
-          th Стоимость
-          th Доктор
-          th Дата
-          th Статус
-        for val in orders
+      div(id="orders-info" class="card")
+        table
           tr
-            td #{val['ms_id']}
-            td #{val['ms_name']}
-            td #{val['proc_realCost']}
-            td(class="doctor") #{val['doc_id']}
-            td #{val['proc_date'].split(' ')[0]}
-            if val['proc_status'] === 'true'
-              td(class="st-active") active
-            else
-              td(class="st-inactive") inactive
-    div(id="doctor-report-window")
-      div(id="doctor-report-form")
-        div(id="doctor-info-line")
-          img(src="../resources/images/system/user.jpg" width="50")
-          p(id="doctor-name")
+            th ID
+            th Заказ
+            th Стоимость
+            th Доктор
+            th Дата
+            th Статус
+          for val in orders
+            tr
+              td #{val['ms_id']}
+              td #{val['ms_name']}
+              td #{val['proc_realCost']}
+              td(class="doctor") #{val['doc_id']}
+              td #{val['proc_date'].split(' ')[0]}
+              if val['proc_status'] === 'true'
+                td(class="st-active") active
+              else
+                td(class="st-inactive") inactive
+      div(id="doctor-report-window")
+        div(id="doctor-report-form")
+          div(id="doctor-info-line")
+            img(src="../resources/images/system/user.jpg" width="50")
+            p(id="doctor-name")
 
-        input(id="doc-eval" type="range" min="0" max="100")
-        textarea(id="doc-report")
-        button(id="send-doctor-report-btn") Отправить
+          input(id="doc-eval" type="range" min="0" max="100")
+          textarea(id="doc-report")
+          button(id="send-doctor-report-btn") Отправить
+
+  div(class="area-wrapper")
+    div(id="client-stats" class="area")
+      div(id="money-costs")
+        canvas(id="finances-canvas")
+      div(id="orders-structure")
+        canvas(id="orders-canvas")
+      div(id="fav-doctor")
+
 block footer

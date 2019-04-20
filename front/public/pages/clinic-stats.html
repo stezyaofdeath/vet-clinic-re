@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Clinic stats</title>
+    <link rel="stylesheet" href="../styles/clinic-stats.css">
+
+    <script src="../resources/ext-libs/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../resources/ext-libs/Chart.js/Chart.min.js"></script>
+    <script defer src="../scripts/clinic-stats.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div class="gray-bar">
+    </div>
+    <main>
+      <div class="content-card">
+        <div class="statistics-area finances">
+          <h1>Наши доходы за последний год</h1>
+          <div class="finances-canvas-wrapper">
+            <canvas id="finances-canvas" width="300" height="300"></canvas>
+          </div>
+          <div class="most-expencieve-order">
+            <span>Самый дорогой заказ:</span>
+            <span id="expencievest-order"></span>
+          </div>
+        </div>
+
+        <div class="statistics-area orders-and-specs">
+          <h1>Структура заказов</h1>
+          <div class="orders-and-specs-charts">
+            <div class="orders-canvas-wrapper">
+              <canvas id="orders-canvas" width="300" height="300"></canvas>
+            </div>
+            <div class="specialisations-canvas-wrapper">
+              <canvas id="specialisations-canvas" width="300" height="300"></canvas>
+            </div>
+          </div>
+          <div class="most-popular-doctor">
+            <span>Самый востребованный доктор:</span>
+            <div id="popularest-doctor"><p></p></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+@font-face {
+    font-family: PoiretOne-Regular;
+    src: url(../resources/fonts/Poiret_One/PoiretOne-Regular.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  padding-top: 5vw;
+
+  display: flex;
+  justify-content: center;
+}
+
+.gray-bar {
+  position: absolute;
+  height: 40vw;
+  width: 100%;
+
+  background: linear-gradient(180deg, #bfbfbf, #ffffff);
+}
+
+.content-card {
+  width: 75vw;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  background-color: #ffffff;
+  box-shadow: 0 0 0.5vw #000000f0;
+  border-radius: 5px;
+}
+
+.statistics-area {
+  margin: 1vw 0vw 1vw 0vw;
+  padding: 1vw;
+  box-sizing: border-box;
+  height: 65vh;
+  width: 90%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  font-family: PoiretOne-Regular;
+  font-weight: lighter;
+
+  border: 1px dashed #bfbfbf;
+  border-radius: 10px;
+}
+
+.statistics-area h1 {
+  font-family: PoiretOne-Regular;
+  font-weight: lighter;
+}
+
+.finances span:first-child {
+  font-family: PoiretOne-Regular;
+  font-weight: lighter;
+  font-style: italic;
+}
+
+.finances-canvas-wrapper {
+  width: 35vw;
+}
+
+.orders-and-specs-charts {
+  width: 90%;
+
+  display: flex;
+  justify-content: space-around;
+}
+
+.most-popular-doctor span {
+  font-family: PoiretOne-Regular;
+  font-weight: lighter;
+  font-style: italic;
+}
